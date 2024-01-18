@@ -5,6 +5,8 @@ import * as r from "rge.js";
 
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 
+import ConsoleCapture from 'capture-console-logs';
+
 import { updateCodeContent } from '@/lib/redux/features/codeContent/codeContentSlice';
 
 
@@ -26,14 +28,21 @@ const CodeCanvas = () => {
   const canvasRef = useRef(null);
   useEffect(() => {
     const evaluateCode = async(code: any) => {
+      const cc = new ConsoleCapture();
+      cc.start()
       try {
         await eval(code as string);
       }
       catch(error) {
         console.log(error)
+      }
+      cc.stop()
+      console.log(cc.getCaptures())
+      if (consoleRef.current !== null && consoleRef.current !== undefined) {
+        for (let i = 0; i < cc.getCaptures().length; i++) {
 
-        if (consoleRef.current !== null && consoleRef.current !== undefined) {
-          consoleRef.current.textContent += `${error as any}`;
+          consoleRef.current.innerHTML += `${cc.getCaptures()[i].args[0]}`
+          consoleRef.current.innerHTML += `<br>`
         }
       }
     }
@@ -58,7 +67,7 @@ const CodeCanvas = () => {
       // Set your desired canvas size
       width={800}
       height={350}
-      style={{ border: '1px solid rgba(0, 0, 0, 0.2)', borderRadius: '5px', width: '100%' }}
+      style={{ border: '1px solid rgba(0, 0, 0, 0.2)', borderRadius: '5px', width: '100%', maxWidth: '1500px' }}
     />
     {/* {consoleShown && ( */}
       {/* <> */}
