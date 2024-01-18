@@ -61,14 +61,15 @@ const CodeCanvas = () => {
   return (
     <>
     <button className="my-3 bg-black text-white px-4 py-2 rounded-full" onClick={() => {setConsoleShown(prev => !prev); console.log("hi")}}>{consoleShown ? "Hide Console" : "Show Console"} <span className="text-sm opacity-70">(beta)</span></button>
-     <canvas
-      ref={canvasRef}
-      id="gameCanvas"
-      // Set your desired canvas size
-      width={800}
-      height={350}
-      style={{ border: '1px solid rgba(0, 0, 0, 0.2)', borderRadius: '5px', width: '100%', maxWidth: '1500px' }}
-    />
+    <div className="w-full max-w-[1500px] h-full min-h-[650px]">
+      <canvas
+        ref={canvasRef}
+        id="gameCanvas"
+        // Set your desired canvas size
+        style={{ border: '1px solid rgba(0, 0, 0, 0.2)', borderRadius: '5px' }}
+      />
+    </div>
+
     {/* {consoleShown && ( */}
       {/* <> */}
           <div  className={`absolute top-[50%] left-[50%] w-[75%] h-[50%] max-w-[75%] overflow-y-auto z-[100] items-center justify-start flex-col bg-white border-[1px] border-neutral-300 rounded-lg mt-auto mb-auto py-7 px-8 ${consoleShown==true ? "!flex" : "hidden"}`} style={{ transform: 'translate(-50%, -50%)' }}>
