@@ -49,7 +49,7 @@ const CodeCanvas = () => {
 
     // const hello = fetchD()
     // Takes the canvas ID and expected FPS.
-    const rge = new r.Engine('gameCanvas', 60);
+    const rge = new r.Engine('gameCanvas', 120);
     (window as any).r = r;
     evaluateCode(code as string)
 
