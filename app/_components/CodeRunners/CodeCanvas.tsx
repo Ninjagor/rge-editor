@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useEffect, useState } from 'react';
-// @ts-expect-error
 import * as r from "rge.js";
 
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
