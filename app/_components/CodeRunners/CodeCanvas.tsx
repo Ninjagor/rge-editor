@@ -55,7 +55,9 @@ const CodeCanvas = () => {
       isEmbedded: false,
       __fcm__: true,
     },  120);
+    let $CANVAS_ID = 'gameCanvas';
     (window as any).r = r;
+    (window as any).$CANVAS_ID = $CANVAS_ID;
     evaluateCode(code as string)
 
     return () => {
