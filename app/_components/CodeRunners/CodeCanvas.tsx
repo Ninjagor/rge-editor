@@ -50,7 +50,7 @@ const CodeCanvas = () => {
     // Takes the canvas ID and expected FPS.
     const rge = new r.Engine('gameCanvas', {
       isEmbedded: false,
-      __fcm__: false,
+      __fcm__: true,
     },  120);
     (window as any).r = r;
     evaluateCode(code as string)
