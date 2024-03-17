@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 
 import ConsoleCapture from 'capture-console-logs';
 
-import { updateCodeContent } from '@/lib/redux/features/codeContent/codeContentSlice';
+import { updateCodeContent, setStarterCode } from '@/lib/redux/features/codeContent/codeContentSlice';
 
 
 const CodeCanvas = () => {
@@ -22,6 +22,9 @@ const CodeCanvas = () => {
     
         if (storedCode) {
           dispatch(updateCodeContent(storedCode));
+        }
+        if (!storedCode) {
+          dispatch(setStarterCode());
         }
       }, [dispatch]);
   const canvasRef = useRef(null);

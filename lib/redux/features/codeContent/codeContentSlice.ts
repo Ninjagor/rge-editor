@@ -6,6 +6,17 @@ interface CounterState {
 }
 
 const initialState = { code: `// Welcome to the online RGE.js editor/playground!
+// Type your code here, then press the play icon to run it! ` } as CounterState
+
+const codeContentSlice = createSlice({
+  name: 'codeContent',
+  initialState,
+  reducers: {
+    updateCodeContent(state, action: PayloadAction<string | null>) {
+      state.code = action.payload
+    },
+    setStarterCode(state) {
+state.code = `// Welcome to the online RGE.js editor/playground!
 // Type your code here, then press the play icon to run it! 
 // Some example code has been provided for you.
 
@@ -40,17 +51,10 @@ function tick() {
   }, 300);
   
   if (moving_rectangle.y < 300) moving_rectangle.y += 1;
-}` } as CounterState
-
-const codeContentSlice = createSlice({
-  name: 'codeContent',
-  initialState,
-  reducers: {
-    updateCodeContent(state, action: PayloadAction<string | null>) {
-      state.code = action.payload
-    },
+}`
+    }
   },
 })
 
-export const { updateCodeContent } = codeContentSlice.actions
+export const { updateCodeContent, setStarterCode } = codeContentSlice.actions
 export default codeContentSlice.reducer
