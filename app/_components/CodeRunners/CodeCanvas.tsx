@@ -55,10 +55,15 @@ const CodeCanvas = () => {
       isEmbedded: false,
       __fcm__: true,
     },  120);
+    rge.stop();
     let $CANVAS_ID = 'gameCanvas';
     (window as any).r = r;
     (window as any).$CANVAS_ID = $CANVAS_ID;
     evaluateCode(code as string)
+
+    window.onbeforeunload = function(){
+      rge.stop();
+    };
 
     return () => {
         // Safely dispose of RGE when component is unmounted.
