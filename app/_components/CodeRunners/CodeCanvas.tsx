@@ -2,6 +2,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as r from "rge.js";
 
+import { io } from "socket.io-client";
+
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 
 import ConsoleCapture from 'capture-console-logs';
@@ -58,6 +60,7 @@ const CodeCanvas = () => {
     rge.stop();
     let $CANVAS_ID = 'gameCanvas';
     (window as any).r = r;
+    (window as any).io = io;
     (window as any).$CANVAS_ID = $CANVAS_ID;
     evaluateCode(code as string)
 
